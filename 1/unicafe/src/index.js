@@ -1,22 +1,26 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 
-const StaticsLine = ({text, value, unit}) => <div>{text} {value} {unit} <br /></div>
+const StaticsLine = ({text, value, unit}) => <tr><td>{text}</td><td>{value}</td><td>{unit}</td></tr>
 
 const Statics = ({good, bad, neutral}) => {
   const all = good + bad + neutral;
 
   if (all === 0) {
-    return <div> No deedback given </div>
+    return <div> No feedback given </div>
   }
 
   return <div>
-    <StaticsLine text={"good"} value={good} />
-    <StaticsLine text={"neutral"} value={neutral} />
-    <StaticsLine text={"bad"} value={bad} />
-    <StaticsLine text={"all"} value={all} />
-    <StaticsLine text={"average"} value={(good - bad) / all} />
-    <StaticsLine text={"positive"} value={(good / all) * 100} unit={"%"} />
+    <table>
+      <tbody>
+        <StaticsLine text={"good"} value={good} />
+        <StaticsLine text={"neutral"} value={neutral} />
+        <StaticsLine text={"bad"} value={bad} />
+        <StaticsLine text={"all"} value={all} />
+        <StaticsLine text={"average"} value={(good - bad) / all} />
+        <StaticsLine text={"positive"} value={(good / all) * 100} unit={"%"} />
+      </tbody>
+    </table>
   </div>
 }
 
